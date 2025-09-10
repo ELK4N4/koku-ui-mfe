@@ -1,19 +1,14 @@
 import './app.scss';
 
-import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 import React, { useEffect, useLayoutEffect } from 'react';
 import { invalidateSession } from 'utils/sessionStorage';
 
-import pkg from '../package.json';
 import { useFeatureToggle } from './components/featureToggle';
 import { Routes } from './routes';
 
 const App = () => {
-  const { updateDocumentTitle } = useChrome();
-
   useEffect(() => {
     // You can use directly the name of your app
-    updateDocumentTitle(pkg.insights.appname);
   }, []);
 
   // Initialize Unleash feature toggles

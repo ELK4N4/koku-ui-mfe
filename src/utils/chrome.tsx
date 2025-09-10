@@ -1,5 +1,4 @@
-import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
-import React, { useLayoutEffect, useRef, useState } from 'react';
+import React, { useLayoutEffect, useRef } from 'react';
 
 export interface ChromeComponentProps {
   chrome: {
@@ -8,20 +7,7 @@ export interface ChromeComponentProps {
 }
 
 export const withChrome = Component => {
-  const isOrgAdmin = async auth => {
-    const data: any = await auth.getUser();
-    try {
-      return !!data?.identity.user?.is_org_admin;
-    } catch {
-      return false;
-    }
-  };
   const ComponentWithChromeProp: React.FC<any> = props => {
-    const { auth } = useChrome();
-
-    const [initialized, setInitialized] = useState(false);
-    const [orgAdmin, setOrgAdmin] = useState(false);
-
     const isMounted = useRef(false);
     useLayoutEffect(() => {
       isMounted.current = true;
@@ -30,16 +16,7 @@ export const withChrome = Component => {
       };
     }, []);
 
-    useLayoutEffect(() => {
-      isOrgAdmin(auth).then(val => {
-        if (isMounted?.current) {
-          setOrgAdmin(val);
-          setInitialized(true);
-        }
-      });
-    });
-
-    return initialized ? <Component {...props} chrome={{ isOrgAdmin: orgAdmin }} /> : null;
+    return <Component {...props} />;
   };
 
   return ComponentWithChromeProp;
