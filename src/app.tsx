@@ -1,8 +1,6 @@
 import './app.scss';
 
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
-import NotificationsProvider from '@redhat-cloud-services/frontend-components-notifications/NotificationsProvider';
-import { createStore } from '@redhat-cloud-services/frontend-components-notifications/state';
 import React, { useEffect, useLayoutEffect } from 'react';
 import { invalidateSession } from 'utils/sessionStorage';
 
@@ -12,7 +10,6 @@ import { Routes } from './routes';
 
 const App = () => {
   const { updateDocumentTitle } = useChrome();
-  const store = createStore();
 
   useEffect(() => {
     // You can use directly the name of your app
@@ -34,9 +31,7 @@ const App = () => {
 
   return (
     <div>
-      <NotificationsProvider store={store}>
-        <Routes />
-      </NotificationsProvider>
+      <Routes />
     </div>
   );
 };

@@ -3,7 +3,6 @@
 import '@patternfly/patternfly/patternfly-addons.css';
 import './styles/global.css';
 
-import NotificationsPortal from '@redhat-cloud-services/frontend-components-notifications/NotificationPortal';
 import React from 'react';
 import { Provider } from 'react-redux';
 
@@ -13,7 +12,6 @@ import { mfeStore } from './store';
 const AppEntry = () => {
   return (
     <Provider store={mfeStore as any}>
-      <NotificationsPortal />
       <App />
     </Provider>
   );
