@@ -1,5 +1,4 @@
 import { Bullseye, Spinner } from '@patternfly/react-core';
-import { userAccess } from 'components/userAccess';
 import React, { lazy, Suspense } from 'react';
 import { Route, Routes as RouterRoutes } from 'react-router-dom';
 
@@ -26,35 +25,35 @@ const Welcome = lazy(() => import(/* webpackChunkName: "ocpDetails" */ 'routes/c
 
 const routes = {
   ocmOverview: {
-    element: userAccess(Welcome),
+    element: Welcome,
     path: '/ocm/overview',
   },
   optimizationsBadge: {
-    element: userAccess(OptimizationsBadgeStaging),
+    element: OptimizationsBadgeStaging,
     path: '/ros/optimizations/badge',
   },
   optimizationsBreakdown: {
-    element: userAccess(OptimizationsBreakdownStaging),
+    element: OptimizationsBreakdownStaging,
     path: '/ros/optimizations/breakdown',
   },
   optimizationsDetails: {
-    element: userAccess(OptimizationsDetailsStaging),
+    element: OptimizationsDetailsStaging,
     path: '/ros/optimizations/details',
   },
   optimizationsLink: {
-    element: userAccess(OptimizationsLinkStaging),
+    element: OptimizationsLinkStaging,
     path: '/ros/optimizations/link',
   },
   optimizationsSummary: {
-    element: userAccess(OptimizationsSummaryStaging),
+    element: OptimizationsSummaryStaging,
     path: '/ros/optimizations/summary',
   },
   optimizationsTable: {
-    element: userAccess(OptimizationsTableStaging),
+    element: OptimizationsTableStaging,
     path: '/ros/optimizations/table',
   },
   welcome: {
-    element: userAccess(Welcome),
+    element: Welcome,
     path: '/',
   },
 };
