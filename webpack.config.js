@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { container } = require('webpack');
 const { ModuleFederationPlugin } = container;
-const { dependencies, insights } = require('./package.json');
+const { insights } = require('./package.json');
 const moduleName = insights.appname.replace(/-(\w)/g, (_, match) => match.toUpperCase());
 
 module.exports = {
@@ -61,11 +61,8 @@ module.exports = {
         './MfeOptimizationsSummary': path.resolve(__dirname, './src/fed-modules/mfeOptimizationsSummary.tsx'),
         './MfeOptimizationsTable': path.resolve(__dirname, './src/fed-modules/mfeOptimizationsTable.tsx'),
       },
-      shared: [
-        { 'react-redux': { version: dependencies['react-redux'] } },
-        { 'react-router-dom': { version: dependencies['react-router-dom'], import: false, singleton: true } },
-        { '@unleash/proxy-client-react': { version: dependencies['@unleash/proxy-client-react'], singleton: true } },
-      ],
+      // No shared dependencies - each app bundles its own
+      shared: {},
     }),
     new HtmlWebpackPlugin({ template: path.resolve(__dirname, 'public/index.html') }),
   ],

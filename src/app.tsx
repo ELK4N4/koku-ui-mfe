@@ -1,6 +1,7 @@
 import './app.scss';
 
 import React, { useEffect, useLayoutEffect } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import { useFeatureToggle } from './components/featureToggle';
 import { Routes } from './routes';
@@ -25,9 +26,11 @@ const App = () => {
   }, []);
 
   return (
-    <div>
-      <Routes />
-    </div>
+    <Router>
+      <div>
+        <Routes />
+      </div>
+    </Router>
   );
 };
 
