@@ -14,12 +14,17 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: 'auto',
+    publicPath: '/staging/cost-management/',
     clean: true,
   },
   devServer: {
-    port: 3002,
-    historyApiFallback: true,
+    port: 1337,
+    host: '0.0.0.0',
+    server: 'https', // Enable HTTPS for .redhat.com domains
+    allowedHosts: 'all', // Allow any host to access the dev server
+    historyApiFallback: {
+      rewrites: [{ from: /^\/staging\/cost-management\/.*$/, to: '/staging/cost-management/index.html' }],
+    },
     headers: {
       'Access-Control-Allow-Origin': '*',
     },

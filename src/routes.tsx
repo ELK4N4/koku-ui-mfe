@@ -61,7 +61,7 @@ const routes = {
 };
 
 const Routes = () => (
-  <Router>
+  <Router basename="/staging/cost-management">
     <Navigation>
       <Suspense
         fallback={
