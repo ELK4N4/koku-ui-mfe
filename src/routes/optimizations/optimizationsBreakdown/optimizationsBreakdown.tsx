@@ -6,7 +6,6 @@ import { parseQuery } from 'api/queries/query';
 import type { RecommendationReportData } from 'api/ros/recommendations';
 import { RosPathsType, RosType } from 'api/ros/ros';
 import type { AxiosError } from 'axios';
-import { useIsBoxPlotToggleEnabled } from 'components/featureToggle';
 import messages from 'locales/messages';
 import type { RefObject } from 'react';
 import React, { useEffect, useState } from 'react';
@@ -51,7 +50,6 @@ interface OptimizationsBreakdownOwnProps {
 interface OptimizationsBreakdownStateProps {
   breadcrumbLabel?: string;
   breadcrumbPath?: string;
-  isBoxPlotToggleEnabled?: boolean;
   isOptimizationsDetails?: boolean;
   projectPath?: string; // Project path (i.e., OCP details breakdown path)
   report?: RecommendationReportData;
@@ -69,7 +67,6 @@ const OptimizationsBreakdown: React.FC<OptimizationsBreakdownProps> = () => {
   const {
     breadcrumbLabel,
     breadcrumbPath,
-    isBoxPlotToggleEnabled,
     isOptimizationsDetails,
     projectPath,
     report,
@@ -185,7 +182,7 @@ const OptimizationsBreakdown: React.FC<OptimizationsBreakdownProps> = () => {
             optimizationType={tab}
             recommendations={report?.recommendations}
           />
-          {plotsData && isBoxPlotToggleEnabled && (
+          {plotsData && (
             <div style={styles.utilizationContainer}>
               <OptimizationsBreakdownUtilization
                 currentInterval={currentInterval}
@@ -308,7 +305,6 @@ const useMapToProps = (): OptimizationsBreakdownStateProps => {
     breadcrumbLabel: queryFromRoute[breadcrumbLabelKey],
     breadcrumbPath:
       location?.state?.[isOptimizationsDetails ? 'optimizations' : 'optimizationsBreakdown']?.breadcrumbPath,
-    isBoxPlotToggleEnabled: useIsBoxPlotToggleEnabled(),
     isOptimizationsDetails,
     projectPath: location?.state?.optimizations?.projectPath,
     report,
