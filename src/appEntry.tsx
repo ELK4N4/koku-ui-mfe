@@ -1,5 +1,4 @@
-// Todo: Uncomment for use with non-shared PatternFly packages
-// import '@patternfly/patternfly/patternfly.css';
+import '@patternfly/patternfly/patternfly.css';
 import '@patternfly/patternfly/patternfly-addons.css';
 import './styles/global.css';
 
