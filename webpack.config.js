@@ -3,6 +3,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { container } = require('webpack');
 const { ModuleFederationPlugin } = container;
 const { insights } = require('./package.json');
+
+// Load environment variables from .env file
+require('dotenv').config();
+
 const moduleName = insights.appname.replace(/-(\w)/g, (_, match) => match.toUpperCase());
 
 module.exports = {
@@ -19,6 +23,15 @@ module.exports = {
     headers: {
       'Access-Control-Allow-Origin': '*',
     },
+    proxy: [
+      {
+        context: ['/api'],
+        target: process.env.PROXY_TARGET || 'http://localhost:8000',
+        changeOrigin: true,
+        secure: false,
+        logLevel: 'debug',
+      },
+    ],
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
