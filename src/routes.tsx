@@ -2,6 +2,8 @@ import { Bullseye, Spinner } from '@patternfly/react-core';
 import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Routes as RouterRoutes } from 'react-router-dom';
 
+import { Navigation } from './components/navigation';
+
 const NotFound = lazy(() => import(/* webpackChunkName: "notFound" */ 'routes/components/page/notFound'));
 const OptimizationsBadgeStaging = lazy(
   () => import(/* webpackChunkName: "recommendations" */ 'routes/staging/optimizations/optimizationsBadgeStaging')
@@ -59,24 +61,26 @@ const routes = {
 };
 
 const Routes = () => (
-  <Suspense
-    fallback={
-      <Bullseye>
-        <Spinner size="lg" />
-      </Bullseye>
-    }
-  >
-    <Router>
-      <RouterRoutes>
-        {Object.keys(routes).map(key => {
-          const route = routes[key];
-          return <Route key={route.path} path={route.path} element={<route.element />} />;
-        })}
-        {/* Finally, catch all unmatched routes */}
-        <Route path="*" element={<NotFound />} />
-      </RouterRoutes>
-    </Router>
-  </Suspense>
+  <Router>
+    <Navigation>
+      <Suspense
+        fallback={
+          <Bullseye>
+            <Spinner size="lg" />
+          </Bullseye>
+        }
+      >
+        <RouterRoutes>
+          {Object.keys(routes).map(key => {
+            const route = routes[key];
+            return <Route key={route.path} path={route.path} element={<route.element />} />;
+          })}
+          {/* Finally, catch all unmatched routes */}
+          <Route path="*" element={<NotFound />} />
+        </RouterRoutes>
+      </Suspense>
+    </Navigation>
+  </Router>
 );
 
 export { routes, Routes };
