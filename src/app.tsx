@@ -1,7 +1,7 @@
 import './app.scss';
 
 import React, { useEffect, useLayoutEffect } from 'react';
-import { invalidateSession } from 'utils/sessionStorage';
+import { invalidateSession } from './utils/sessionStorage';
 
 import { useFeatureToggle } from './components/featureToggle';
 import { Routes } from './routes';
