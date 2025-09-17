@@ -6,7 +6,7 @@ const { dependencies, insights } = require('./package.json');
 const moduleName = insights.appname.replace(/-(\w)/g, (_, match) => match.toUpperCase());
 
 module.exports = {
-  entry: path.resolve(__dirname, 'src/index.ts'),
+  entry: path.resolve(__dirname, 'src/entry.ts'),
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
@@ -22,6 +22,7 @@ module.exports = {
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
+    modules: [path.resolve(__dirname, 'src'), path.resolve(__dirname, 'node_modules')],
   },
   module: {
     rules: [
