@@ -47,7 +47,7 @@ const Navigation: React.FC<NavigationProps> = ({ children }) => {
           padding: '1rem',
         }}
       >
-        <h2 style={{ margin: '0 0 1rem 0', fontSize: '1.2rem' }}>Navigation</h2>
+        <h2 style={{ margin: '0 0 1rem 0', fontSize: '1.2rem' }}>ROS MFE</h2>
         <Nav>
           <NavList>
             {navigationItems.map(item => (
@@ -62,10 +62,7 @@ const Navigation: React.FC<NavigationProps> = ({ children }) => {
       </div>
 
       {/* Main Content */}
-      <div style={{ flex: 1, padding: '2rem' }}>
-        <h1 style={{ margin: '0 0 2rem 0', fontSize: '1.5rem' }}>Cost Management MFE</h1>
-        {children}
-      </div>
+      <div style={{ flex: 1, padding: '2rem' }}>{children}</div>
     </div>
   );
 };
