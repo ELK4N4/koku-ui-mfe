@@ -24,9 +24,7 @@ const App = () => {
 
   return (
     <IntlProvider locale={intl.locale} defaultLocale={intl.defaultLocale} messages={intl.messages}>
-      <div>
-        <Routes />
-      </div>
+      <Routes />
     </IntlProvider>
   );
 };
