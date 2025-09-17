@@ -59,14 +59,14 @@ const routes = {
 };
 
 const Routes = () => (
-  <Router>
-    <Suspense
-      fallback={
-        <Bullseye>
-          <Spinner size="lg" />
-        </Bullseye>
-      }
-    >
+  <Suspense
+    fallback={
+      <Bullseye>
+        <Spinner size="lg" />
+      </Bullseye>
+    }
+  >
+    <Router>
       <RouterRoutes>
         {Object.keys(routes).map(key => {
           const route = routes[key];
@@ -75,8 +75,8 @@ const Routes = () => (
         {/* Finally, catch all unmatched routes */}
         <Route path="*" element={<NotFound />} />
       </RouterRoutes>
-    </Suspense>
-  </Router>
+    </Router>
+  </Suspense>
 );
 
 export { routes, Routes };
