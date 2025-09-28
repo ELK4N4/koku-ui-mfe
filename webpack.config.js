@@ -80,7 +80,13 @@ module.exports = {
         './MfeOptimizationsTable': path.resolve(__dirname, './src/fed-modules/mfeOptimizationsTable.tsx'),
       },
       // No shared dependencies - each app bundles its own
-      shared: {},
+      shared: {
+        react: { singleton: true, strictVersion: false, requiredVersion: false },
+        'react-dom': { singleton: true, strictVersion: false, requiredVersion: false },
+        'react/jsx-runtime': { singleton: true, strictVersion: false, requiredVersion: false },
+        'react/jsx-dev-runtime': { singleton: true, strictVersion: false, requiredVersion: false },
+        'react-redux': { singleton: true, strictVersion: false, requiredVersion: false },
+      },
     }),
     new HtmlWebpackPlugin({ template: path.resolve(__dirname, 'public/index.html') }),
   ],
