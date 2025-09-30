@@ -5,7 +5,6 @@ const { ModuleFederationPlugin } = container;
 const { insights } = require('./package.json');
 
 // Load environment variables from .env file
-require('dotenv').config();
 
 const moduleName = insights.appname.replace(/-(\w)/g, (_, match) => match.toUpperCase());
 
@@ -31,7 +30,7 @@ module.exports = {
     proxy: [
       {
         context: ['/api'],
-        target: process.env.PROXY_TARGET || 'http://localhost:8000',
+        target: process.env.ROS_BACKEND_URL || 'http://localhost:8000',
         changeOrigin: true,
         secure: false,
         logLevel: 'debug',
@@ -79,13 +78,14 @@ module.exports = {
         './MfeOptimizationsSummary': path.resolve(__dirname, './src/fed-modules/mfeOptimizationsSummary.tsx'),
         './MfeOptimizationsTable': path.resolve(__dirname, './src/fed-modules/mfeOptimizationsTable.tsx'),
       },
-      // No shared dependencies - each app bundles its own
       shared: {
         react: { singleton: true, strictVersion: false, requiredVersion: false },
         'react-dom': { singleton: true, strictVersion: false, requiredVersion: false },
         'react/jsx-runtime': { singleton: true, strictVersion: false, requiredVersion: false },
         'react/jsx-dev-runtime': { singleton: true, strictVersion: false, requiredVersion: false },
         'react-redux': { singleton: true, strictVersion: false, requiredVersion: false },
+        'react-router': { singleton: true, strictVersion: false, requiredVersion: false },
+        'react-router-dom': { singleton: true, strictVersion: false, requiredVersion: false },
       },
     }),
     new HtmlWebpackPlugin({ template: path.resolve(__dirname, 'public/index.html') }),
