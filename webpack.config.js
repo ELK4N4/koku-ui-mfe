@@ -5,6 +5,7 @@ const { ModuleFederationPlugin } = container;
 const { insights } = require('./package.json');
 
 // Load environment variables from .env file
+require('dotenv').config();
 
 const moduleName = insights.appname.replace(/-(\w)/g, (_, match) => match.toUpperCase());
 
