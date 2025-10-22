@@ -47,7 +47,7 @@ const Navigation: React.FC<NavigationProps> = ({ children }) => {
           padding: '1rem',
         }}
       >
-        <h2 style={{ margin: '0 0 1rem 0', fontSize: '1.2rem' }}>ROS MFE</h2>
+        <h2 style={{ margin: '0 0 1rem 0', fontSize: '1.2rem' }}>Koku UI MFE - On Prem</h2>
         <Nav>
           <NavList>
             {navigationItems.map(item => (
