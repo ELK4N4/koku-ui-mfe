@@ -20,8 +20,6 @@ module.exports = {
   devServer: {
     port: 1337,
     host: '0.0.0.0',
-    server: 'https', // Enable HTTPS for .redhat.com domains
-    allowedHosts: 'all', // Allow any host to access the dev server
     historyApiFallback: {
       index: '/index.html',
     },
