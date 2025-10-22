@@ -31,11 +31,11 @@ npm build
 npm test
 ```
 
-## Running Koku MFE locally
+## Running Koku UI MFE locally
 
-Koku UI MFE communicates to `http://localhost:8000` as a default backend ur.
+Koku UI MFE communicates to `http://localhost:8000` as a default backend url.
 
-You can define `ROS_BACKEND_URL` env var to point to another backend
+You can define `ROS_BACKEND_URL` env var to point to another backend.
 
 1. Start development server
 ```
@@ -43,7 +43,7 @@ npm start
 ```
 2. Open the following URL
 ```
-https://localhost:1337/staging/cost-management
+https://localhost:1337/
 ```
 
 
