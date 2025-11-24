@@ -13,7 +13,7 @@
   },
   "scripts": {
     "build": "npm run build:prod",
-    "build:prod": "fec build",
+    "build:prod": "webpack --mode production",
     "check:dependencies": "npx npm-check-updates",
     "check:dependencies:update": "npx npm-check-updates -u",
     "check:messages": "sh scripts/unused-messages.sh",
